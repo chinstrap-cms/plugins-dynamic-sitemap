@@ -20,7 +20,7 @@ final class RegisterSitemapRoute extends BaseListener
         $this->router = $router;
     }
 
-    public function handle(EventInterface $event)
+    public function __invoke(EventInterface $event): void
     {
         $this->router->get('/sitemap', 'Chinstrap\Plugins\DynamicSitemap\Http\Controllers\SitemapController::index');
     }
