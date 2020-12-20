@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Chinstrap\Plugins\DynamicSitemap\Listeners;
 
 use Chinstrap\Core\Listeners\BaseListener;
-use League\Event\EventInterface;
+use Laminas\EventManager\EventInterface;
 use League\Route\Router;
 
 final class RegisterSitemapRoute extends BaseListener

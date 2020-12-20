@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 namespace Chinstrap\Plugins\DynamicSitemap\Tests;
 
+use Chinstrap\Core\Kernel\ContainerFactory;
+use Chinstrap\Core\Kernel\Kernel;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
-use Chinstrap\Core\Kernel\Application;
 
 abstract class TestCase extends \PHPUnit\Framework\TestCase
 {
@@ -22,9 +23,9 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
         if (!defined('PUBLIC_DIR')) {
             define('PUBLIC_DIR', __DIR__ . '/../public/');
         }
-        $this->app = new Application();
+        $this->container = (new ContainerFactory())();
+        $this->app = new Kernel($this->container);
         $this->app->bootstrap();
-        $this->container = $this->app->getContainer();
     }
 
     public function tearDown(): void

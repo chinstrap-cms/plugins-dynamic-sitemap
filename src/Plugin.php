@@ -7,29 +7,29 @@ namespace Chinstrap\Plugins\DynamicSitemap;
 use Chinstrap\Core\Contracts\Plugin as PluginContract;
 use Chinstrap\Core\Events\RegisterStaticRoutes;
 use Chinstrap\Plugins\DynamicSitemap\Listeners\RegisterSitemapRoute;
-use League\Event\EmitterInterface;
+use Laminas\EventManager\EventManagerInterface;
 
 final class Plugin implements PluginContract
 {
     /**
-     * @var EmitterInterface
+     * @var EventManagerInterface
      */
-    private $emitter;
+    private $manager;
 
     /**
      * @var RegisterSitemapRoute
      */
     private $listener;
 
-    public function __construct(EmitterInterface $emitter, RegisterSitemapRoute $listener)
+    public function __construct(EventManagerInterface $manager, RegisterSitemapRoute $listener)
     {
-        $this->emitter = $emitter;
+        $this->manager = $manager;
         $this->listener = $listener;
     }
 
     public function register(): void
     {
-        $this->emitter->addListener(
+        $this->manager->attach(
             RegisterStaticRoutes::class,
             $this->listener
         );
