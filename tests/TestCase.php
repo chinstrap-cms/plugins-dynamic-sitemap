@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Chinstrap\Tests;
+namespace Chinstrap\Plugins\DynamicSitemap\Tests;
 
 use Chinstrap\Core\Kernel\AppFactory;
 use Chinstrap\Core\Kernel\ContainerFactory;
@@ -31,7 +31,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
     public function setUp(): void
     {
         if (!defined('ROOT_DIR')) {
-            define('ROOT_DIR', __DIR__ . '/');
+            define('ROOT_DIR', __DIR__ . '/../');
         }
         if (!defined('CONTENT_PATH')) {
             define('CONTENT_PATH', 'content/');
